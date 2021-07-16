@@ -1,0 +1,88 @@
+<openerp>
+    <data>
+    	<!-- Pajak -->
+
+    	 <record id="view_hr_pajak_filter" model="ir.ui.view">
+            <field name="name">hr.holidays.filter</field>
+            <field name="model">hr.holidays</field>
+            <field name="arch" type="xml">
+                <search string="Search Pajak">
+                	<group expand="0" strung="Group By">
+                		<filter name="group_employee" string="Employee" context="{'group_by':'employee_id'}"/>
+                		<filter name="group_date" string="start Month" context="{'group_by':'date:month'}"/>
+                	</group>
+                </search>
+            </field>
+        </record>
+
+    	<record id="tree_hr_pajak" model="ir.ui.view">
+        	<field name="name">Report Pajak</field>
+            <field name="model">hr.pajak</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree editable="bottom">
+            		<field name="employee_id"/>
+            		<field name="date"/>
+            		<field name="income"/>
+            		<field name="pajak" sum="Total Pajak"/>
+            	</tree>
+            </field>
+        </record>
+
+    	<record id="action_hr_pajak" model="ir.actions.act_window">
+            <field name="name">Pajak</field>
+            <field name="res_model">hr.pajak</field>
+            <field name="view_type">form</field>           
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="view_hr_pajak_filter"/>
+        </record>
+
+        <!-- Asuransi-->
+
+        <record id="view_hr_asuransi_filter" model="ir.ui.view">
+            <field name="name">hr.holidays.filter</field>
+            <field name="model">hr.holidays</field>
+            <field name="arch" type="xml">
+                <search string="Search Pajak">
+                	<group expand="0" strung="Group By">
+                		<filter name="group_employee" string="Employee" context="{'group_by':'employee_id'}"/>
+                		<filter name="group_date" string="start Month" context="{'group_by':'date:month'}"/>
+                	</group>
+                </search>
+            </field>
+        </record>
+
+        <record id="tree_hr_asuransi" model="ir.ui.view">
+        	<field name="name">Report Asuransi</field>
+            <field name="model">hr.asuransi</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+            	<tree editable="bottom">
+            		<field name="employee_id"/>
+            		<field name="date"/>
+            		<!-- <field name="jht_tk" sum="Total JHT TK"/>
+					<field name="jht_pr" sum="Total JHT PR"/>
+					<field name="jkk" sum="Total JKK"/>
+					<field name="jkm" sum="Total JKM"/> -->
+					<field name="bpjs_ketenagakerjaan_pr" sum="Jamsostek di bayar perusahaan"/>
+                    <field name="bpjs_ketenagakerjaan_tk" sum="Jamsostek Dibayar Karyawan"/>
+                    <field name="total_bpjs_ketenagakerjaan" sum="Total Jamsostek"/>
+                    <field name="bpjs_tk" sum="Total BPJS TK"/>
+					<field name="bpjs_pr" sum="Total BPJS PR"/>
+					<field name='total_bpjs' sum="Total BPJS"/>
+            	</tree>
+            </field>
+        </record>
+
+        <record id="action_hr_asuransi" model="ir.actions.act_window">
+            <field name="name">Asuransi</field>
+            <field name="res_model">hr.asuransi</field>
+            <field name="view_type">form</field>           
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="view_hr_asuransi_filter"/>
+        </record>
+    	<menuitem id="menu_report" name="Reporting" parent="hr.menu_hr_root" sequence="45"/>
+    	<menuitem id="menu_hr_pajak" name="Report Pajak" parent="softbles.menu_report" sequence="1" action="action_hr_pajak" groups="base.group_hr_manager"/>
+    	<!-- <menuitem id="menu_hr_asuransi" name="Report Asuransi" parent="softbless.menu_report" sequence="2" action="action_hr_asuransi" groups="base.group_hr_manager"/> -->
+    </data>
+</openerp>

@@ -1,0 +1,69 @@
+<openerp>
+	<data>
+		<record id="hr_master_ptkp_t0" model="hr.ptkp">
+	        <field name="kode">TK</field> 
+	        <field name="nominal_bulan">2362500</field>
+	        <field name="nominal_tahun">24300000</field>
+	    </record>																													   <record id="hr_master_ptkp_t1" model="hr.ptkp">
+	        <field name="kode">T1</field> 
+            <field name="nominal_bulan">2193750 </field>
+            <field name="nominal_tahun">26325000</field>
+	    </record>
+	    <record id="hr_master_ptkp_t2" model="hr.ptkp">
+	        <field name="kode">T2</field> 
+            <field name="nominal_bulan">2362500</field>
+            <field name="nominal_tahun">28350000</field>
+	    </record>
+	    <record id="hr_master_ptkp_t3" model="hr.ptkp">
+	        <field name="kode">T3</field> 
+            <field name="nominal_bulan">2531250</field>
+            <field name="nominal_tahun">30375000</field>
+	    </record>
+	    <record id="hr_master_ptkp_k0" model="hr.ptkp">
+	        <field name="kode">K0</field> 
+            <field name="nominal_bulan">2193750</field>
+            <field name="nominal_tahun">26325000</field>
+	    </record>
+	    <record id="hr_master_ptkp_k1" model="hr.ptkp">
+	        <field name="kode">K1</field> 
+            <field name="nominal_bulan">2362500</field>
+            <field name="nominal_tahun">28350000</field>
+	    </record>
+	    <record id="hr_master_ptkp_k2" model="hr.ptkp">
+	        <field name="kode">K2</field> 
+            <field name="nominal_bulan">2531250</field>
+            <field name="nominal_tahun">30375000</field>
+	    </record>
+	    <record id="hr_master_ptkp_k3" model="hr.ptkp">
+	        <field name="kode">K3</field> 
+            <field name="nominal_bulan">2700000</field>
+            <field name="nominal_tahun">32400000</field>
+	    </record>
+	    
+	    <!--Master PKP-->
+	    <record id="hr_master_pkp_1" model="hr.pkp">
+	        <field name="kode">p1</field> 
+            <field name="nominal_min">0</field>
+            <field name="nominal_max">50000000</field>
+            <field name="pajak">5</field>
+	    </record>	    
+	    <record id="hr_master_pkp_2" model="hr.pkp">
+	        <field name="kode">p2</field> 
+            <field name="nominal_min">50000001</field>
+            <field name="nominal_max">250000000</field>
+            <field name="pajak">15</field>
+	    </record>
+	    <record id="hr_master_pkp_3" model="hr.pkp">
+	        <field name="kode">p3</field> 
+            <field name="nominal_min">250000001</field>
+            <field name="nominal_max">500000000</field>
+            <field name="pajak">25</field>
+	    </record>	
+	    <record id="hr_master_pkp_4" model="hr.pkp">
+	        <field name="kode">p4</field> 
+            <field name="nominal_min">500000001</field>
+            <field name="nominal_max">1000000000000</field>
+            <field name="pajak">30</field>
+	    </record>	
+	</data>
+</openerp>

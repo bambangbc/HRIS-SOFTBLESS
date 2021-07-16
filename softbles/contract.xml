@@ -1,0 +1,120 @@
+<openerp>
+    <data>
+        <!-- Type Contract -->
+         <record id="hr_contract_type_view_form2" model="ir.ui.view">
+            <field name="name">hr.contract.type.view.form2</field>
+            <field name="model">hr.contract.type</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_type_view_form"/>
+            <field name="arch" type="xml">                
+                  <field name="name" position="after">
+                    <group colspan="4">
+                        <group string="BPJS Kesehatan">
+                            <field name="bpjs_pr"/>
+                            <field name="bpjs_tk"/>    
+                        </group>
+                        <group string="Biaya Jabatan">
+                            <field name="tunjangan_jabatan"/>
+                            <field name="max_tunj_jabatan"/>
+                        </group>
+                        <group string="BPJS Ketenagakerjaan">
+                            <field name="jkk"/>
+                            <field name="jkm"/>
+                            <field name="jpk_single"/>
+                            <field name="jpk_menikah"/>
+                        </group>
+                        <group string="Tunjangan Hari Tua">
+                            <field name="jht_pr"/>
+                            <field name="jht_tk"/>
+                        </group>
+                        <group string="Batas Max Dan Min BPJS">
+                            <field name="max_bpjs"/>
+                            <field name="min_bpjs"/>
+                        </group>
+                    </group>          
+                  </field>                       
+            </field>
+        </record>
+
+        <!-- Master Pajak -->
+        <record model="ir.actions.act_window" id="action_ptkp">
+            <field name="name">Master PTKP</field>
+            <field name="res_model">hr.ptkp</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+        </record> 
+
+        <record model="ir.actions.act_window" id="action_pkp">
+            <field name="name">Master PKP</field>
+            <field name="res_model">hr.pkp</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+        </record> 
+
+        <record id="hr_contract_view_form1" model="ir.ui.view">
+            <field name="name">hr.contract.view.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <field name="wage" position="after">
+                   <field name="tunj_makan"/>
+                   <field name="tunj_makan_bulanan"/>
+                   <field name="tunj_transport"/>
+                   <field name="tunj_lembur"/>
+                   <field name="tunj_komunikasi"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="hr_ptkp_view_tree" model="ir.ui.view">
+            <field name="name">hr.ptkp</field>
+            <field name="model">hr.ptkp</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">  
+                <tree string="Master PTKP" editable="bottom">    
+                <field name="kode"/>          
+                <field name="nominal_bulan" on_change="onchange_kali(nominal_bulan,nominal_tahun)"/>
+                <field name="nominal_tahun" on_change="onchange_bagi(nominal_bulan,nominal_tahun)"/>
+                </tree>                      
+            </field>
+        </record>         
+
+         <record id="hr_pkp_view_tree" model="ir.ui.view">
+            <field name="name">hr.pkp</field>
+            <field name="model">hr.pkp</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">  
+                <tree string="Master PKP" editable="bottom">    
+                <field name="kode"/>          
+                <field name="nominal_min" />
+                <field name="nominal_max"/>
+                <field name="pajak"/>
+                </tree>                      
+            </field>
+        </record>
+
+        <!-- Employee-->
+        <record model="ir.ui.view" id="tab_form_employee_view">
+            <field name="name">employe</field>
+            <field name="model">hr.employee</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="gender" position="after">
+                    <field name="ptkp_id"/>
+                </field>
+                <field name="address_home_id" position="after">
+                    <field name="fingerprint_code"/>
+                    <field name="skypee_id"/>
+                    <field name="gtalk_id"/>
+                    <field name="no_hp"/>
+                    <field name="no_ktp"/>
+                    <field name="other"/>
+                </field>
+            </field>
+        </record>
+
+        <menuitem action="action_ptkp" parent="hr_payroll.payroll_configure" name="Master PTKP" id="master_ptkp" sequence="100" groups="base.group_hr_manager"/>
+        <menuitem action="action_pkp" parent="hr_payroll.payroll_configure" name="Master PKP" id="master_pkp" sequence="101" groups="base.group_hr_manager"/>
+
+    </data>
+</openerp>
